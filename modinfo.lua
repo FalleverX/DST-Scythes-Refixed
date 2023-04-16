@@ -72,7 +72,7 @@ langs['zht'], langs['zhr'] = langs.zh, langs.zh
 name = "Scythestest[Re-Fixed]"
 description = "Scythe and GoldenScythe, nice!"
 author = "Captain_M"
-version = "2.42"
+version = "2.43"
 
 forumthread = " "
 
