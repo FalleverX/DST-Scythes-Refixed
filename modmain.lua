@@ -51,7 +51,7 @@ Assets =
 
 }
 
-
+--GLOBAL =_G
 
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -66,12 +66,17 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SCYTHE = "Mow down packs of enemies."
 GLOBAL.STRINGS.NAMES.SCYTHE_GOLDEN = "Golden Scythe"        --剽殷鎺菛灆
 GLOBAL.STRINGS.RECIPE_DESC.SCYTHE_GOLDEN = "Gathering more effective."
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SCYTHE_GOLDEN = "Gathering more effective."
+GLOBAL.STRINGS.ACTIONS.MOWDOWN = "Mow Down" --Appears in the game.
+
+--- translate modmain
+modimport("modlangstrings")
 
 
-local scythe = GLOBAL.Recipe("scythe", { Ingredient("twigs", 2), Ingredient("rope", 1), Ingredient("flint", 2)}, RECIPETABS.TOOLS, {SCIENCE = 1} )
+--local scythe = GLOBAL.Recipe("scythe", { Ingredient("twigs", 2), Ingredient("rope", 1), Ingredient("flint", 2)}, RECIPETABS.TOOLS, {SCIENCE = 1} )
+local scythe = AddRecipe2("scythe", { Ingredient("twigs", 2), Ingredient("rope", 1), Ingredient("flint", 2)}, TECH.SCIENCE_ONE, nil, {"TOOLS"})
 scythe.atlas = "images/inventoryimages/scythe.xml"
 
-local scythe_golden = GLOBAL.Recipe("scythe_golden", { Ingredient("twigs", 4), Ingredient("rope", 2), Ingredient("goldnugget", 2)}, RECIPETABS.TOOLS, {SCIENCE = 2} )
+local scythe_golden = AddRecipe2("scythe_golden", { Ingredient("twigs", 4), Ingredient("rope", 2), Ingredient("goldnugget", 2)},{SCIENCE = 2},nil, {"TOOLS"})
 scythe_golden.atlas = "images/inventoryimages/scythe_golden.xml"
 
 
@@ -140,7 +145,6 @@ elseif (picking_rate == "slow") then
 	
 end
 
-GLOBAL.STRINGS.ACTIONS.MOWDOWN = "Mow Down" --Appears in the game.
 
 MOWDOWN = GLOBAL.Action(1)
 MOWDOWN.id = "MOWDOWN"                                               
