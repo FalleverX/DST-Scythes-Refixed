@@ -1,6 +1,6 @@
---自定义可以被镰刀砍伐的对象代码在338行，有个添加农场作物的范例
---镰刀扣除耐久相关在187-189行, 默认一次扣除1点耐久，可自行更改
---排队论相关的因为镰刀用的是官方的pick动作，这里只需要对pick所执行对应的sg修改下就好，如果要添加新动作的话需要另外兼容
+--????????????????338?????????????
+--?????????187-189?, ??????1?????????
+--????????????????pick?????????pick??????sg??????????????????????
 
 TUNING.SCYTHE_USES = 50
 TUNING.GOLDENSCYTHE_USES = 200
@@ -63,7 +63,7 @@ GLOBAL.STRINGS.RECIPE_DESC.SCYTHE = "Mow down packs of enemies."
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SCYTHE = "Mow down packs of enemies."
 
               
-GLOBAL.STRINGS.NAMES.SCYTHE_GOLDEN = "Golden Scythe"        --ÏÔÊ¾µÄÃû×Ö
+GLOBAL.STRINGS.NAMES.SCYTHE_GOLDEN = "Golden Scythe"        --剽殷鎺菛灆
 GLOBAL.STRINGS.RECIPE_DESC.SCYTHE_GOLDEN = "Gathering more effective."
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SCYTHE_GOLDEN = "Gathering more effective."
 
@@ -76,8 +76,8 @@ scythe_golden.atlas = "images/inventoryimages/scythe_golden.xml"
 
 
 -----------------------------------------------------------------------------------
---ÐèÒªÍê³É£º
---1.Á­µ¶ÊÕ¸îµÄ¹ý³Ì£º ÅÐ¶Ï¶¯×÷£¬ÅÐ¶Ï¿ÉÒÔÊÕ¸îµÄ¶«Î÷£¬²¥·ÅÊÕ¸î¶¯»­£¬¶¯»­½áÊø£¬ÊÕ¸îÎïÆ·
+--褗悝謭鼝湩
+--1.叼骠义鲗鎺�禳逌� 徰糌纛烐湭徰糌◥汊义鲗鎺舢做湭�菌徱鬻岕畀饻�纛�皤犚洔�义鲗讒掹
 
 -------------------------------------------
 -- I based this code off of a similar piece written by TheDanaAddams
@@ -106,7 +106,7 @@ local endtime = 12
 --as default 
 
 local picking_rate = GetModConfigData("picking_rate")
-------------------------------------------------------设置采集速率
+------------------------------------------------------??????
 
 if (picking_rate == "crazy") then
 	
@@ -168,8 +168,8 @@ end
 
 
 
-AddAction(MOWDOWN)        --貌似会出现-dst published 文件夹下，preview里面 bugreport1 上面的问题 
---（可能会关系到componentactions.lua  components\playactionpicker.lua 以及 components\playcontroller.lua
+AddAction(MOWDOWN)        --?????-dst published ?????preview?? bugreport1 ????? 
+--???????componentactions.lua  components\playactionpicker.lua ?? components\playcontroller.lua
 
 
 
@@ -189,8 +189,8 @@ local mowAtDown= State({
 		local cooldown = cooldowntime*FRAMES
 						
 		if equip and equip:HasTag("mower")  then
---			print("执行")
-			inst.AnimState:PlayAnimation("atk")								--因为尚未做动画，所以先用攻击动画
+--			print("??")
+			inst.AnimState:PlayAnimation("atk")								--????????????????
 			inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_weapon")
 		end
 
@@ -209,15 +209,15 @@ local mowAtDown= State({
              local equip = inst.components.inventory and inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) or nil
 		     inst:PerformBufferedAction() 
 
-             if equip and equip:HasTag("mower") and equip.components.finiteuses then  --判断手持的为镰刀时才扣耐久
+             if equip and equip:HasTag("mower") and equip.components.finiteuses then  --?????????????
                    --equip.mowtask = equip:DoTaskInTime(0, function(inst)  
                         equip.components.finiteuses:Use(1)  
                         --[[    	    
-                         默认为攻击1次消耗1的耐久，若要想攻击消耗的耐久与收割消耗的耐久不同，则需要：
-                         1. TUNING.SCYTHE_USE 和 TUNING.GOLDENSCYTHE_USES 为基础次数，也是“攻击消耗次数”，
-                         2. 把本modmain()的  equip.components.finiteuses:Use(0.4)  里面的数字调整
-                         3. 对应的prefabs脚本里的数字调整 inst.components.finiteuses:SetConsumption(ACTIONS.MOWDOWN, 0.4)
-							否则显示的数字不对
+                         ?????1???1?????????????????????????????
+                         1. TUNING.SCYTHE_USE ? TUNING.GOLDENSCYTHE_USES ?????????????????
+                         2. ??modmain()?  equip.components.finiteuses:Use(0.4)  ???????
+                         3. ???prefabs???????? inst.components.finiteuses:SetConsumption(ACTIONS.MOWDOWN, 0.4)
+							?????????
                          ]]
                          --equip.mowtask = Cancel()
                          --equip.mowtask = nil
@@ -232,7 +232,7 @@ local mowAtDown= State({
 		end),
 	},
 
-	ontimeout = function(inst)               --动作结束，（也谓之超时）时执行
+	ontimeout = function(inst)               --???????????????
 	--inst:PerformBufferedAction()      
 	end,
 	
@@ -262,8 +262,8 @@ local mowAtDown= State({
 })
 
 
------------------------以下这部分多参照 SGwilson_client.lua  中对应的动作和内容             
---ps：当有configure时， 要对 cooldown（10） 和 timeline里的 4（starttime） 14（endtime）进行设置.  一般cooldown代表完成动作，4为前摇时间，14 为带后摇的完成时间
+-----------------------???????? SGwilson_client.lua  ?????????             
+--ps???configure?? ?? cooldown?10? ? timeline?? 4?starttime? 14?endtime?????.  ??cooldown???????4??????14 ?????????
 local mowAtDown_client= State({
     name = "mowdown",
     tags = { "doing", "busy" },
@@ -275,17 +275,17 @@ local mowAtDown_client= State({
 		--ismower = inst:HasTag("mower")    --test
 		inst.components.locomotor:Stop()
 
-		local cooldown = cooldowntime * FRAMES	--client里的cooldown 基本用不到，都是随着主（非client）的cooldown，包括下面的大部分内容都会跟随主（非client）的设置执行
+		local cooldown = cooldowntime * FRAMES	--client??cooldown ?????????????client??cooldown??????????????????client??????
 
 		if  equip:HasTag("mower")  then
---			print("执行")
-			inst.AnimState:PlayAnimation("atk")								--因为尚未做动画，所以先用攻击动画
+--			print("??")
+			inst.AnimState:PlayAnimation("atk")								--????????????????
 			inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_weapon")
 			--inst.AnimState:PlayAnimation("mowdown")
 		end
 
- inst:PerformPreviewBufferedAction()   ---------在client里是关键， 有这一句才能保证客户端的角色动作会执行inst:PerformBufferedAction()
- --（无论这个xxx_client 的函数里有没有inst:PerformBufferedAction()，   inst:PerformPreviewBufferedAction()  必须要有）
+ inst:PerformPreviewBufferedAction()   ---------?client????? ???????????????????inst:PerformBufferedAction()
+ --?????xxx_client ???????inst:PerformBufferedAction()?   inst:PerformPreviewBufferedAction()  ?????
 		inst.sg:SetTimeout(cooldown)  --
     end,
 
@@ -325,7 +325,7 @@ local mowAtDown_client= State({
 
 AddStategraphState("wilson", mowAtDown)
 
-----对应上面的Addaction（） ,如果不添加action，这部分应该也是无用的
+----?????Addaction?? ,?????action???????????
 --[[
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MOWDOWN, function(inst, action)
 																					local tool = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
@@ -346,7 +346,7 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MOWDOWN, funct
 																		)
 )
 ]]
------------------------(貌似ACTIONS.MOWDOWN并不会执行，而是执行的ACTIONS.PICK,所以scythe.lua里的 consumption 要用 ACTIONS.PICK)--------------
+-----------------------(??ACTIONS.MOWDOWN???????????ACTIONS.PICK,??scythe.lua?? consumption ?? ACTIONS.PICK)--------------
 
 ---------------------------------------------------------
 --local SGWils = require "stategraphs/SGwilson"
@@ -372,10 +372,10 @@ local function NewPICK(inst, action)
 	end 
 
 	if action.target.components.pickable ~= nil then
-                                                                                                                                                                --判断是否为农作物，是的话会有"farm_plant"这个标签
---		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") or (action.target:HasTag("farm_plant"))) then  --新加的部分来实现在符合条件时调用镰刀的pick动作
+                                                                                                                                                                --??????????????"farm_plant"????
+--		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") or (action.target:HasTag("farm_plant"))) then  --???????????????????pick??
 --				return "mowdown"
-		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") ) then  --新加的部分来实现在符合条件时调用镰刀的pick动作
+		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") ) then  --???????????????????pick??
 				return "mowdown"
 
 			elseif (mow_farmplant == "yes") and tool and tool:HasTag("mower") and (action.target:HasTag("farm_plant")) then
@@ -424,7 +424,7 @@ else
 	print "3"
 end
 ]]
-		if tool and tool:HasTag("mower")  and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")) then                               --新加的部分来实现在符合条件时调用镰刀的pick动作
+		if tool and tool:HasTag("mower")  and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")) then                               --???????????????????pick??
 				return "mowdown"
 
 			elseif (mow_farmplant == "yes") and tool and tool:HasTag("mower") and (action.target:HasTag("farm_plant")) then
@@ -451,7 +451,7 @@ end
 	
 end
 
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PICK, NewPICK))             --改写SGwilson中 actionhandlers{}中的ACTIONS.PICK 的函数为 NewPICK
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PICK, NewPICK))             --??SGwilson? actionhandlers{}??ACTIONS.PICK ???? NewPICK
 GLOBAL.package.loaded["stategraphs/SGwilson"] = nil 
 
 
