@@ -2,7 +2,7 @@
 local langs = {
     ['zh'] = {
         name = "镰刀[Re-Fixed]",
-        description = "镰刀和金镰刀, 非常棒!!",
+        description = "镰刀和黄金镰刀, 非常棒!!",
         author = "影",
         configuration_options = {
             {
@@ -23,11 +23,11 @@ local langs = {
                 label = "耐久度",
                 hover = "你可以选择镰刀使用的次数",
                 options = {
-                    { description = "正常", data = "normal", hover = "镰刀/金镰刀可使用 25/100 次" },
-                    { description = "好", data = "good", hover = "镰刀/金镰刀可使用 40/160 次" },
-                    { description = "良好", data = "fine", hover = "镰刀/金镰刀可使用 50/200 次" },
-                    { description = "优秀", data = "excellent", hover = "镰刀/金镰刀可使用 75/300 次" },
-                    { description = "耐用", data = "durable", hover = "镰刀/金镰刀可使用 125/500 次" },
+                    { description = "正常", data = "normal", hover = "镰刀/黄金镰刀可使用 25/100 次" },
+                    { description = "好", data = "good", hover = "镰刀/黄金镰刀可使用 40/160 次" },
+                    { description = "良好", data = "fine", hover = "镰刀/黄金镰刀可使用 50/200 次" },
+                    { description = "优秀", data = "excellent", hover = "镰刀/黄金镰刀可使用 75/300 次" },
+                    { description = "耐用", data = "durable", hover = "镰刀/黄金镰刀可使用 125/500 次" },
                 },
                 default = "fine"
             },
@@ -72,7 +72,7 @@ langs['zht'], langs['zhr'] = langs.zh, langs.zh
 name = "Scythestest[Re-Fixed]"
 description = "Scythe and GoldenScythe, nice!"
 author = "Captain_M"
-version = "2.43"
+version = "2.44"
 
 forumthread = " "
 
