@@ -74,7 +74,8 @@ description = "Scythe and GoldenScythe, nice!"
 author = "Captain_M"
 version = "2.44"
 
-forumthread = " "
+-- forumthread = "https://steamcommunity.com/sharedfiles/filedetails/?id=2963262385&tscn=1700009031"
+forumthread = ""
 
 api_version = 10
 all_clients_require_mod = true

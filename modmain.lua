@@ -379,7 +379,8 @@ local function NewPICK(inst, action)
                                                                                                                                                                 --??????????????"farm_plant"????
 --		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") or (action.target:HasTag("farm_plant"))) then  --???????????????????pick??
 --				return "mowdown"
-		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") ) then  --???????????????????pick??
+		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")
+            or action.target.prefab == "monkeytail"  or action.target.prefab == "bananabush") then  --???????????????????pick??
 				return "mowdown"
 
 			elseif (mow_farmplant == "yes") and tool and tool:HasTag("mower") and (action.target:HasTag("farm_plant")) then
@@ -428,7 +429,8 @@ else
 	print "3"
 end
 ]]
-		if tool and tool:HasTag("mower")  and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")) then                               --???????????????????pick??
+		if tool and tool:HasTag("mower")  and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")
+    or action.target.prefab == "monkeytail" or action.target.prefab == "bananabush") then                               --???????????????????pick??
 				return "mowdown"
 
 			elseif (mow_farmplant == "yes") and tool and tool:HasTag("mower") and (action.target:HasTag("farm_plant")) then
