@@ -5,6 +5,7 @@
 TUNING.SCYTHE_USES = 50
 TUNING.GOLDENSCYTHE_USES = 200
 TUNING.SCYTHE_DAMAGE = 34
+TUNING.WOLFGANG_MIGHTINESS_WORK_GAIN.MOWDOWN = 0.2
 
 local mow_durability = GetModConfigData("durability")
 if mow_durability == "normal" then
@@ -197,7 +198,11 @@ local mowAtDown= State({
 			inst.AnimState:PlayAnimation("atk")								--????????????????
 			inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_weapon")
 		end
-
+        
+        local action = inst:GetBufferedAction();
+        if action and action.target and action.target.components.workable and action and action.doer then
+            action.target.components.workable:WorkedBy_Internal(action.doer, 1)
+        end
 		inst.sg:SetTimeout(cooldown)  --
     end,
 
