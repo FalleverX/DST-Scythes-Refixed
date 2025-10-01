@@ -5,7 +5,7 @@
 TUNING.SCYTHE_USES = 50
 TUNING.GOLDENSCYTHE_USES = 200
 TUNING.SCYTHE_DAMAGE = 34
-TUNING.WOLFGANG_MIGHTINESS_WORK_GAIN.MOWDOWN = 0.2
+TUNING.WOLFGANG_MIGHTINESS_WORK_GAIN.MOWDOWN = 0.1
 
 local mow_durability = GetModConfigData("durability")
 if mow_durability == "normal" then
@@ -200,8 +200,11 @@ local mowAtDown= State({
 		end
         
         local action = inst:GetBufferedAction();
-        if action and action.target and action.target.components.workable and action and action.doer then
-            action.target.components.workable:WorkedBy_Internal(action.doer, 1)
+        if action and action.target and action.target.components.workable and action and action.doer
+            and action.doer.components.mightiness
+        then
+            action.doer.components.mightiness:DoDelta(TUNING.WOLFGANG_MIGHTINESS_WORK_GAIN.MOWDOWN)
+            -- action.target.components.workable:WorkedBy_Internal(action.doer, 1)
         end
 		inst.sg:SetTimeout(cooldown)  --
     end,
@@ -385,7 +388,7 @@ local function NewPICK(inst, action)
 --		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds") or (action.target:HasTag("farm_plant"))) then  --???????????????????pick??
 --				return "mowdown"
 		if tool and tool:HasTag("mower") and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")
-            or action.target.prefab == "monkeytail"  or action.target.prefab == "bananabush" or action.target.prefab == "trapdoorgrass") then  --???????????????????pick??
+            or action.target.prefab == "monkeytail"  or action.target.prefab == "bananabush" or action.target.prefab == "trapdoorgrass" or action.target.prefab == "bullkelp_plant") then  --???????????????????pick??
 				return "mowdown"
 
 			elseif (mow_farmplant == "yes") and tool and tool:HasTag("mower") and (action.target:HasTag("farm_plant")) then
@@ -435,7 +438,7 @@ else
 end
 ]]
 		if tool and tool:HasTag("mower")  and ((action.target.prefab == "grass") or (action.target.prefab == "sapling") or (action.target.prefab == "reeds")
-    or action.target.prefab == "monkeytail" or action.target.prefab == "bananabush" or action.target.prefab == "trapdoorgrass") then                               --???????????????????pick??
+    or action.target.prefab == "monkeytail" or action.target.prefab == "bananabush" or action.target.prefab == "trapdoorgrass" or action.target.prefab == "bullkelp_plant") then                               --???????????????????pick??
 				return "mowdown"
 
 			elseif (mow_farmplant == "yes") and tool and tool:HasTag("mower") and (action.target:HasTag("farm_plant")) then
